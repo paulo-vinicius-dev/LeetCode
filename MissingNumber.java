@@ -2,15 +2,14 @@ import java.util.Arrays;
 
 class Solution {
     public int missingNumber(int[] nums) {
-        Arrays.sort(nums);
-        int numLength = nums.length;
-        
-        for (int i = 0; i < numLength; i++) {
-            if (nums[i] != i) {
-                return i;
-            }
-        }
-        return numLength;
+	// usando formula de gauss	
+	int n = nums.length;
+	int expectedSum = n * (n + 1) / 2;
+	int currentSum = 0;
+	for (int i = 0; i < n; i++) {
+	    currentSum += nums[i];	    
+	}
+	return expectedSum - currentSum;
     }
 }
 
